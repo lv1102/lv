@@ -20,5 +20,24 @@ define(["jquery","template","cookie"], function($,template) {
 			var html = template("profile_tpl",userinfo);
 			$("#profile").html(html);
 		}
+
+
+
+		// 退出登录实现
+		$("#logout_btn").click(function(){
+			//1.向后台发送ajax请求,请求退出
+			$.ajax({
+				url : "/api/logout",
+				type : "post",
+				success : function(data){
+					console.log(data);
+					if(data.code == 200){
+						//2.接收到请求的数据之后,如果退出成功,就跳回登录页
+						// location.href = "/dashboard/login"; 
+					}
+				}
+			})
+		})
+
 	})
-});
+})	
